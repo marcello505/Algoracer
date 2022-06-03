@@ -64,7 +64,10 @@ public class CarBehaviourV2 : MonoBehaviour
         var minSpeedBeforeAllowTurningFactor = (_rigidbody.velocity.magnitude / 8);
         minSpeedBeforeAllowTurningFactor = Mathf.Clamp01(minSpeedBeforeAllowTurningFactor);
         
-        _rotationAngle += steeringInput * turnFactor * minSpeedBeforeAllowTurningFactor;
+        //When going backwards, reverse input
+        var reverseInputModifier = _velocityVsForward < 0f ? -1f : 1f;
+            
+        _rotationAngle += steeringInput * turnFactor * minSpeedBeforeAllowTurningFactor * reverseInputModifier;
 
         _rigidbody.MoveRotation(Quaternion.Euler(0, _rotationAngle, 0));
     }
