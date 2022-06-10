@@ -16,10 +16,12 @@ public class CarBehaviourV2 : MonoBehaviour
     
     //Components
     private Rigidbody _rigidbody;
+    private CarAnimator _carAnimator;
     
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _carAnimator = GetComponent<CarAnimator>();
     }
 
     private void FixedUpdate()
@@ -29,6 +31,7 @@ public class CarBehaviourV2 : MonoBehaviour
         ApplyEngineForce(accelerationInput);
         KillOrthogonalVelocity();
         ApplySteering(steeringInput);
+        ApplyAnimations(steeringInput, accelerationInput);
     }
 
     void ApplyEngineForce(float accelerationInput)
@@ -79,5 +82,10 @@ public class CarBehaviourV2 : MonoBehaviour
 
         _rigidbody.velocity = forwardVelocity + rightVelocity * driftFactor;
     }
-    
+
+    void ApplyAnimations(float steeringInput, float accelerationInput)
+    {
+        _carAnimator.ApplySteering(steeringInput);
+        _carAnimator.ApplyAcceleration(accelerationInput);
+    }
 }
