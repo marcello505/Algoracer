@@ -8,16 +8,22 @@ public class QuestionGateCollision : MonoBehaviour
 
     public GameObject questionMenu;
     [SerializeField] private UnityEvent questionGateTriggerEvent;
-    private bool active = true;
+    private bool _questionIsActive = true;
 
 
+    public bool IsQuestionActive() { return _questionIsActive; }
+
+    public void SetQuestionActive(bool active)
+    {
+        _questionIsActive = active;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         
-        if(other.gameObject.CompareTag("Player") && active)
+        if(other.gameObject.CompareTag("Player") && _questionIsActive)
         {
-            active = false;
+            _questionIsActive = false;
             questionMenu.gameObject.SetActive(true);
             questionGateTriggerEvent.Invoke();
         }
