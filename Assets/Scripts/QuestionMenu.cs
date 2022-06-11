@@ -16,24 +16,6 @@ public class QuestionMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Answer q1AnswerA = new Answer("Recept", AnswerEnum.A);
-        Answer q1AnswerB = new Answer("Boek", AnswerEnum.B);
-        Answer q1AnswerC = new Answer("Instructies", AnswerEnum.C);
-        Answer q1AnswerD = new Answer("Lijst", AnswerEnum.D);
-
-
-        List<Answer> answersQuestion1 = new List<Answer>();
-        answersQuestion1.Add(q1AnswerA);
-        answersQuestion1.Add(q1AnswerB);
-        answersQuestion1.Add(q1AnswerC);
-        answersQuestion1.Add(q1AnswerD);
-
-
-        Question question1 = new Question("Wat is een ander woord voor een algoritme?", answersQuestion1, AnswerEnum.A);
-
-
-        questions.Add(question1);
-
         
     }
 
@@ -49,7 +31,7 @@ public class QuestionMenu : MonoBehaviour
 
         isAnsweringQuestion = true;
 
-        currentQuestion = this.questions[0];
+        currentQuestion = QuestionManager.getInstance().getRandomQuestion();
 
 
         //Initilize question GUI
