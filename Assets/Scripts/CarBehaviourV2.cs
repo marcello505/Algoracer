@@ -8,7 +8,10 @@ public class CarBehaviourV2 : MonoBehaviour
     [Header("Car settings")] public float maxSpeed = 20;
     public float accelerationFactor = 30.0f;
     public float turnFactor = 3.5f;
+    [Range(0.0f, 1.0f)]
     public float driftFactor = 0.95f;
+    public float boostSpeed = 10;
+    public float boostLength = 0f;
     
     //Local variables
     private float _rotationAngle = 0;
@@ -29,6 +32,7 @@ public class CarBehaviourV2 : MonoBehaviour
         var steeringInput = Input.GetAxis("Horizontal");
         var accelerationInput = Input.GetAxis("Vertical");
         ApplyEngineForce(accelerationInput);
+        ApplyBoosting();
         KillOrthogonalVelocity();
         ApplySteering(steeringInput);
         ApplyAnimations(steeringInput, accelerationInput);
@@ -87,5 +91,15 @@ public class CarBehaviourV2 : MonoBehaviour
     {
         _carAnimator.ApplySteering(steeringInput);
         _carAnimator.ApplyAcceleration(accelerationInput);
+    }
+
+    void ApplyBoosting()
+    {
+        if (boostLength > 0)
+        {
+            var boostForceVector = transform.forward * boostSpeed;
+            _rigidbody.AddForce(boostForceVector, ForceMode.Force);
+            boostLength = Mathf.Max(0, boostLength - Time.fixedDeltaTime);
+        }
     }
 }
