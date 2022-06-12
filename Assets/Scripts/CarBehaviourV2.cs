@@ -20,11 +20,13 @@ public class CarBehaviourV2 : MonoBehaviour
     //Components
     private Rigidbody _rigidbody;
     private CarAnimator _carAnimator;
+    private CarAudio _carAudio;
     
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _carAnimator = GetComponent<CarAnimator>();
+        _carAudio = GetComponent<CarAudio>();
     }
 
     private void FixedUpdate()
@@ -36,6 +38,7 @@ public class CarBehaviourV2 : MonoBehaviour
         KillOrthogonalVelocity();
         ApplySteering(steeringInput);
         ApplyAnimations(steeringInput, accelerationInput);
+        ApplyAudio(accelerationInput);
     }
 
     void ApplyEngineForce(float accelerationInput)
@@ -101,5 +104,10 @@ public class CarBehaviourV2 : MonoBehaviour
             _rigidbody.AddForce(boostForceVector, ForceMode.Force);
             boostLength = Mathf.Max(0, boostLength - Time.fixedDeltaTime);
         }
+    }
+
+    void ApplyAudio(float accelerationInput)
+    {
+        _carAudio.SetPitch(accelerationInput, _rigidbody.velocity.magnitude);
     }
 }
