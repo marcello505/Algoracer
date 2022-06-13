@@ -40,7 +40,7 @@ public class CarBehaviourV2 : MonoBehaviour
             accelerationInput = 0f;
         }
         ApplyEngineForce(accelerationInput);
-        ApplyBoosting();
+        DecayBoosting();
         KillOrthogonalVelocity();
         ApplySteering(steeringInput);
         ApplyAnimations(steeringInput, accelerationInput);
@@ -49,19 +49,23 @@ public class CarBehaviourV2 : MonoBehaviour
 
     void ApplyEngineForce(float accelerationInput)
     {
+        //Increase maxSpeed and accelerationFactor
+        var currentMaxSpeed = maxSpeed + (boostLength > 0f ? boostSpeed : 0f);
+        var currentAccelerationFactor = accelerationFactor + (boostLength > 0f ? boostSpeed : 0f);
+        
         //Calculate how much "forward" we are going in terms of the direction of our velocity
         _velocityVsForward = Vector3.Dot(transform.forward, _rigidbody.velocity);
         
         //Limit so we cannot go faster than the max speed in the forward direction
-        if (_velocityVsForward > maxSpeed && accelerationInput > 0)
+        if (_velocityVsForward > currentMaxSpeed && accelerationInput > 0)
             return;
         
         //Limit backwards speed by 50%
-        if (_velocityVsForward < -maxSpeed * 0.5f && accelerationInput < 0)
+        if (_velocityVsForward < -currentMaxSpeed * 0.5f && accelerationInput < 0)
             return;
         
         //Limit so we cannot go faster in any direction while accelerating
-        if (_rigidbody.velocity.sqrMagnitude > maxSpeed * maxSpeed && accelerationInput > 0)
+        if (_rigidbody.velocity.sqrMagnitude > currentMaxSpeed * currentMaxSpeed && accelerationInput > 0)
             return;
         
         //Apply drag if no input
@@ -69,7 +73,7 @@ public class CarBehaviourV2 : MonoBehaviour
             _rigidbody.drag = Mathf.Lerp(_rigidbody.drag, 3.0f, Time.fixedDeltaTime * 3);
         else _rigidbody.drag = 0;
         
-        var engineForceVector = transform.forward * (accelerationFactor * accelerationInput);
+        var engineForceVector = transform.forward * (currentAccelerationFactor * accelerationInput);
 
         System.Console.WriteLine(engineForceVector);
         _rigidbody.AddForce(engineForceVector, ForceMode.Force);
@@ -102,12 +106,10 @@ public class CarBehaviourV2 : MonoBehaviour
         _carAnimator.ApplyAcceleration(accelerationInput);
     }
 
-    void ApplyBoosting()
+    void DecayBoosting()
     {
         if (boostLength > 0)
         {
-            var boostForceVector = transform.forward * boostSpeed;
-            _rigidbody.AddForce(boostForceVector, ForceMode.Force);
             boostLength = Mathf.Max(0, boostLength - Time.fixedDeltaTime);
         }
     }
