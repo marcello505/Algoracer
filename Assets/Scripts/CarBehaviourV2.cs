@@ -11,11 +11,11 @@ public class CarBehaviourV2 : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float driftFactor = 0.95f;
     public float boostSpeed = 10;
-    public float boostLength = 0f;
     
     //Local variables
     private float _rotationAngle = 0;
     private float _velocityVsForward = 0;
+    private float _boostLength = 0f;
     
     //Components
     private Rigidbody _rigidbody;
@@ -50,8 +50,8 @@ public class CarBehaviourV2 : MonoBehaviour
     void ApplyEngineForce(float accelerationInput)
     {
         //Increase maxSpeed and accelerationFactor
-        var currentMaxSpeed = maxSpeed + (boostLength > 0f ? boostSpeed : 0f);
-        var currentAccelerationFactor = accelerationFactor + (boostLength > 0f ? boostSpeed : 0f);
+        var currentMaxSpeed = maxSpeed + (_boostLength > 0f ? boostSpeed : 0f);
+        var currentAccelerationFactor = accelerationFactor + (_boostLength > 0f ? boostSpeed : 0f);
         
         //Calculate how much "forward" we are going in terms of the direction of our velocity
         _velocityVsForward = Vector3.Dot(transform.forward, _rigidbody.velocity);
@@ -108,14 +108,19 @@ public class CarBehaviourV2 : MonoBehaviour
 
     void DecayBoosting()
     {
-        if (boostLength > 0)
+        if (_boostLength > 0)
         {
-            boostLength = Mathf.Max(0, boostLength - Time.fixedDeltaTime);
+            _boostLength = Mathf.Max(0, _boostLength - Time.fixedDeltaTime);
         }
     }
 
     void ApplyAudio(float accelerationInput)
     {
         _carAudio.SetPitch(accelerationInput, _rigidbody.velocity.magnitude);
+    }
+
+    public void SetBoostingLength(float sec)
+    {
+        _boostLength = sec;
     }
 }
