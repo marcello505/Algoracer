@@ -24,6 +24,7 @@ public class CarBehaviourV2 : MonoBehaviour
     
     private void Awake()
     {
+        _rotationAngle = transform.eulerAngles.y;
         _rigidbody = GetComponent<Rigidbody>();
         _carAnimator = GetComponent<CarAnimator>();
         _carAudio = GetComponent<CarAudio>();
