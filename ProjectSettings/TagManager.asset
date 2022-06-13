@@ -11,6 +11,7 @@ TagManager:
   - AnswerTextB
   - AnswerTextC
   - AnswerTextD
+  - IngamePanel
   layers:
   - Default
   - TransparentFX
