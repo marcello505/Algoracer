@@ -28,6 +28,11 @@ public class CarBehaviourV2 : MonoBehaviour
     {
         var steeringInput = Input.GetAxis("Horizontal");
         var accelerationInput = Input.GetAxis("Vertical");
+        if (QuestionMenu.isAnsweringQuestion == true)
+        {
+            steeringInput = 0f;
+            accelerationInput = 0f;
+        }
         ApplyEngineForce(accelerationInput);
         KillOrthogonalVelocity();
         ApplySteering(steeringInput);
