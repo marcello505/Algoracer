@@ -37,9 +37,9 @@ public class LapManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Check if all gates are inactive
-        var canFinishLap = questionGateCollisions.Any(g => !g.IsQuestionActive());
+        var anyGatesStillActive = questionGateCollisions.Any(g => g.IsQuestionActive());
 
-        if (canFinishLap)
+        if (anyGatesStillActive == false)
         {
             if (currentLap >= totalLaps)
             {
