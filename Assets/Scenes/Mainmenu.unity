@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657832, g: 0.49641222, b: 0.57481664, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -787,7 +787,7 @@ MonoBehaviour:
   quitObject: {fileID: 1964372003}
   nameObject: {fileID: 1156232201}
   goObject: {fileID: 1631476705}
-  inputField: {fileID: 1156232201}
+  inputField: {fileID: 1156232203}
 --- !u!1 &867185535
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,8 +1427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61aa140fd242d884da003e6e823bf78e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainInputField: {fileID: 0}
-  playerName: 2
 --- !u!1 &1461197912
 GameObject:
   m_ObjectHideFlags: 0
