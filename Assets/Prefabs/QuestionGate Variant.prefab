@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3dbecbbbb160d0e68e6c57aaac00755, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -13.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3dbecbbbb160d0e68e6c57aaac00755, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3dbecbbbb160d0e68e6c57aaac00755, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -31.38
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3dbecbbbb160d0e68e6c57aaac00755, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53,6 +53,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3dbecbbbb160d0e68e6c57aaac00755, type: 3}
       propertyPath: m_Name
+      value: QuestionGate
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b3dbecbbbb160d0e68e6c57aaac00755, type: 3}
+      propertyPath: m_TagString
       value: QuestionGate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -89,3 +93,31 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8520321369373127915, guid: b3dbecbbbb160d0e68e6c57aaac00755, type: 3}
+--- !u!114 &1718757783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194466715556206940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d0d7022d23e15a479c308cb345db4e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionMenu: {fileID: 0}
+  questionGateTriggerEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: QuestionMenu, Assembly-CSharp
+        m_MethodName: initliazeQuestionScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

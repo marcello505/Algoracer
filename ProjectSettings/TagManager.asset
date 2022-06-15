@@ -4,6 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - QuestionGate
+  - QuestionMenu
+  - QuestionText
+  - AnswerTextA
+  - AnswerTextB
+  - AnswerTextC
+  - AnswerTextD
+  - IngamePanel
   - Databaseaccess
   layers:
   - Default
