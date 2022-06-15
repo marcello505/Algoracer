@@ -66,8 +66,8 @@ public class QuestionMenu : MonoBehaviour
         StartCoroutine(hideMenu());
 
         //Apply playerboost
-        // menu weg doen duurt nu 7 sec dus er is 3 seconden boost in totaal
-        carObject.SetBoostingLength(10);
+        // menu weg doen duurt nu 3 sec dus er is 3 seconden boost in totaal
+        carObject.SetBoostingLength(6);
     }
 
     private void wrongAnswered()
@@ -86,23 +86,23 @@ public class QuestionMenu : MonoBehaviour
     {
 
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.75f);
 
         questionText.text = "Verder racen in... ";
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.75f);
 
         questionText.text = "3";
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
         questionText.text = "2";
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
         questionText.text = "1";
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
 
         GameObject.FindGameObjectWithTag("QuestionMenu").gameObject.SetActive(false);
