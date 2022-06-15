@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -22,16 +23,23 @@ public class DisplayLeaderboard : MonoBehaviour
         
     }
 
-    private async void DisplayLeaderboardInMesh()
+    private void DisplayLeaderboardInMesh()
     {
         databaseAccess.connect();
         var result = databaseAccess.GetLeaderboardScores();
         var output = "";
 
-        foreach(var score in result)
+        for (var i = 0; i < 10; i++)
         {
-            
-            output += score.Name + "Score: " + score.QuestionsRight + "\n";
+            if (i < result.Count)
+            {
+                var score = result[i];
+                output += $"{i+1}.\t{score.Name}\tCorrect: {score.QuestionsRight}\tTime: {score.Time}\n";
+            }
+            else
+            {
+                output += $"{i+1}. \n";
+            }
         }
 
         Debug.Log(output);
