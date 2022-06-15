@@ -28,9 +28,10 @@ public class LapUI : MonoBehaviour
         if (finishScreenObject != null) finishScreenObject.SetActive(true);
         if (_leaderboardManager != null && timer != null && questionMenu != null)
         {
+            //Submit score
             timer.StopTime();
             var leaderBoardEntry = new Leaderboard();
-            leaderBoardEntry.Name = "test";
+            leaderBoardEntry.Name = UserSettings.name;
             leaderBoardEntry.Time = timer.GetTime();
             leaderBoardEntry.QuestionsRight = questionMenu.GetQuestionsAnsweredCorrectly();
             
