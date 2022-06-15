@@ -53,7 +53,7 @@ public class LeaderboardManager : MonoBehaviour
 
 public class Leaderboard
 {
-    public ObjectId _id { get; set; }
+    public ObjectId _id = ObjectId.GenerateNewId();
     public string Name { get; set; }
     public int QuestionsRight { get; set; }
     [BsonRepresentation(BsonType.Double, AllowTruncation = true)]
