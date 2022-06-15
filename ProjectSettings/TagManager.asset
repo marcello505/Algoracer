@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - QuestionGate
+  - QuestionMenu
+  - QuestionText
+  - AnswerTextA
+  - AnswerTextB
+  - AnswerTextC
+  - AnswerTextD
+  - IngamePanel
+  - Databaseaccess
   layers:
   - Default
   - TransparentFX
