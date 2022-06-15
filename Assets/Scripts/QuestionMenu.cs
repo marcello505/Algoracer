@@ -12,6 +12,7 @@ public class QuestionMenu : MonoBehaviour
     private Question currentQuestion;
     private bool hasAnswered = false;
     public static bool isAnsweringQuestion = false;
+    public CarBehaviourV2 carObject;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +65,9 @@ public class QuestionMenu : MonoBehaviour
 
         StartCoroutine(hideMenu());
 
+        //Apply playerboost
+        // menu weg doen duurt nu 7 sec dus er is 3 seconden boost in totaal
+        carObject.SetBoostingLength(10);
     }
 
     private void wrongAnswered()
@@ -75,7 +79,6 @@ public class QuestionMenu : MonoBehaviour
 
 
         StartCoroutine(hideMenu());
-
     }
 
 
@@ -106,7 +109,6 @@ public class QuestionMenu : MonoBehaviour
 
         isAnsweringQuestion = false;
         hasAnswered = false;
-
     }
 
 
