@@ -6,13 +6,13 @@ using UnityEngine;
 public class DisplayLeaderboard : MonoBehaviour
 {
     private LeaderboardManager databaseAccess;
-    private TextMeshPro leaderboardOutput;
+    private TextMeshProUGUI leaderboardOutput;
 
     // Start is called before the first frame update
     void Start()
     {
         databaseAccess = GameObject.FindGameObjectWithTag("Databaseaccess").GetComponent<LeaderboardManager>();
-        leaderboardOutput = GetComponentInChildren<TextMeshPro>();
+        leaderboardOutput = GetComponentInChildren<TextMeshProUGUI>();
         Invoke("DisplayLeaderboardInMesh", 2f);
     }
 
@@ -24,12 +24,13 @@ public class DisplayLeaderboard : MonoBehaviour
 
     private async void DisplayLeaderboardInMesh()
     {
-        var task = databaseAccess.GetLeaderboardScores();
-        var result = await task;
+        databaseAccess.connect();
+        var result = databaseAccess.GetLeaderboardScores();
         var output = "";
 
         foreach(var score in result)
         {
+            
             output += score.Name + "Score: " + score.QuestionsRight + "\n";
         }
 

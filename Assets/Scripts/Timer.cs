@@ -8,6 +8,7 @@ public class Timer : MonoBehaviour
 {
 
     private float totalTime = 0f;
+    private bool _advanceTime = true;
     public TextMeshProUGUI text;
 
     // Start is called before the first frame update
@@ -23,7 +24,11 @@ public class Timer : MonoBehaviour
         {
             return;
         }
-        totalTime += Time.deltaTime;
+
+        if (_advanceTime)
+        {
+            totalTime += Time.deltaTime;
+        }
 
         DisplayTime(totalTime);
     }
@@ -31,6 +36,16 @@ public class Timer : MonoBehaviour
     public void AddTime(float timeToAdd)
     {
         totalTime += timeToAdd;
+    }
+
+    public float GetTime()
+    {
+        return totalTime;
+    }
+
+    public void StopTime()
+    {
+        _advanceTime = false;
     }
 
 

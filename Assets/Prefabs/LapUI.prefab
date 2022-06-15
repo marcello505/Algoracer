@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 6667514091105107959}
   - component: {fileID: 6667514091105107957}
   - component: {fileID: 6667514091105107958}
+  - component: {fileID: 5279858852017266633}
   m_Layer: 5
   m_Name: LapUI
   m_TagString: Untagged
@@ -274,6 +275,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lapTextObject: {fileID: 6667514091507027989}
   finishScreenObject: {fileID: 5727024622420275731}
+--- !u!114 &5279858852017266633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6667514091105107952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21de7a08980ba8a43bc144de8e22a121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6667514091507027991
 GameObject:
   m_ObjectHideFlags: 0

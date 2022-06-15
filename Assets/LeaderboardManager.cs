@@ -1,8 +1,13 @@
+using System;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 using System.Threading.Tasks;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
 using UnityEngine;
 
 
@@ -14,19 +19,8 @@ public class LeaderboardManager : MonoBehaviour
     IMongoDatabase database;
     IMongoCollection<BsonDocument> collection;
     // Start is called before the first frame update
-    void Start()
-    {
-        connect();
-        //AddToLeaderBoard();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void connect(){
+    public void connect(){
         database = client.GetDatabase("AlgoRace");
         collection = database.GetCollection<BsonDocument>("Leaderboard");
 
@@ -35,43 +29,33 @@ public class LeaderboardManager : MonoBehaviour
         Debug.Log(firstDocument.ToJson());
     }
 
-    public async void AddToLeaderBoard()
+    public async void AddToLeaderBoard(Leaderboard leaderboardEntry)
     {
-        var document = new BsonDocument { {"Name", "Kevin" } };
+        var document = BsonDocument.Parse(JsonConvert.SerializeObject(leaderboardEntry));
         await collection.InsertOneAsync(document);
     }
 
-    public async Task<List<Leaderboard>> GetLeaderboardScores()
+    public IList<Leaderboard> GetLeaderboardScores()
     {
-        var allScoresTask = collection.FindAsync(new BsonDocument());
-        var scoresAwaited = await allScoresTask;
+        var allScoresTask = collection.Find(new BsonDocument())
+            .SortBy(s => s["Time"]).Limit(10);
 
-        List<Leaderboard> scores = new List<Leaderboard>();
-        foreach (var score in scoresAwaited.ToList())
+        var scores = new List<Leaderboard>();
+        foreach (var score in allScoresTask.ToList())
         {
-            scores.Add(Deserialize(score.ToString()));
+            var result = BsonSerializer.Deserialize<Leaderboard>(score);
+            scores.Add(result);
         }
 
         return scores;
-    }
-
-    private Leaderboard Deserialize(string rawjson)
-    {
-        var leaderboard = new Leaderboard();
-
-        var stringWithoutID = rawjson.Substring(rawjson.IndexOf("),") + 4);
-        var name = stringWithoutID.Substring(0, stringWithoutID.IndexOf(":") - 2);
-
-
-
-        leaderboard.Name = name;
-        leaderboard.QuestionsRight = 2;
-        return leaderboard;
     }
 }
 
 public class Leaderboard
 {
+    public ObjectId _id { get; set; }
     public string Name { get; set; }
     public int QuestionsRight { get; set; }
+    [BsonRepresentation(BsonType.Double, AllowTruncation = true)]
+    public float Time { get; set; }
 }
