@@ -541,6 +541,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LapUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6667514091105107958, guid: ed40cd7aa3724812cb764b814687c7be, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 1130265073}
+    - target: {fileID: 6667514091105107958, guid: ed40cd7aa3724812cb764b814687c7be, type: 3}
+      propertyPath: questionMenu
+      value: 
+      objectReference: {fileID: 224129956}
     - target: {fileID: 6667514091105107959, guid: ed40cd7aa3724812cb764b814687c7be, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

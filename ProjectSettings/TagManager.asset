@@ -12,6 +12,7 @@ TagManager:
   - AnswerTextC
   - AnswerTextD
   - IngamePanel
+  - Databaseaccess
   layers:
   - Default
   - TransparentFX

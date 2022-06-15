@@ -13,19 +13,13 @@ public class QuestionMenu : MonoBehaviour
     private bool hasAnswered = false;
     public static bool isAnsweringQuestion = false;
     public CarBehaviourV2 carObject;
+    private int _questionsAnsweredCorrectly = 0;
 
-    // Start is called before the first frame update
-    void Start()
+
+    public int GetQuestionsAnsweredCorrectly()
     {
-        
+        return _questionsAnsweredCorrectly;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     public void initliazeQuestionScreen()
     {
@@ -60,6 +54,7 @@ public class QuestionMenu : MonoBehaviour
     {
 
         emptyAnswerTexts();
+        _questionsAnsweredCorrectly++;
 
         questionText.text = "Goed geantwoord!";
 
