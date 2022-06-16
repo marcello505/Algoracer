@@ -129,7 +129,7 @@ public class QuestionManager
 
     public void generateNewQuestion()
     {
-        int randomNumber = random.Next(0, questions.Count);
+        int randomNumber = random.Next(0, questionsLeft.Count);
         //MessageBox.Show(Convert.ToString(randomNumber));
         currentQuestion = questionsLeft[randomNumber];
 

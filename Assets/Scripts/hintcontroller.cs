@@ -20,16 +20,11 @@ public class hintcontroller : MonoBehaviour
 
     }
 
-    void onTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-
-        Debug.Log("Hint triggered");
         if (other.gameObject.CompareTag("Player"))
         {
-
             StartCoroutine(showHint());
-
-
         }
     }
     IEnumerator showHint()
@@ -39,7 +34,7 @@ public class hintcontroller : MonoBehaviour
 
         hintText.text = hint;
 
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(1.75f);
 
         hintText.text = "";
 
