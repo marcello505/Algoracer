@@ -26,7 +26,7 @@ public class QuestionMenu : MonoBehaviour
 
         isAnsweringQuestion = true;
 
-        currentQuestion = QuestionManager.getInstance().getRandomQuestion();
+        currentQuestion = QuestionManager.getInstance().getCurrentQuestion();
 
 
         //Initilize question GUI
@@ -85,20 +85,22 @@ public class QuestionMenu : MonoBehaviour
 
         questionText.text = "Verder racen in... ";
 
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.5f);
 
         questionText.text = "3";
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
 
         questionText.text = "2";
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
 
         questionText.text = "1";
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
 
+
+        QuestionManager.getInstance().generateNewQuestion();
 
         GameObject.FindGameObjectWithTag("QuestionMenu").gameObject.SetActive(false);
 
