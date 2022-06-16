@@ -13,6 +13,7 @@ TagManager:
   - AnswerTextD
   - IngamePanel
   - Databaseaccess
+  - Virus
   layers:
   - Default
   - TransparentFX
