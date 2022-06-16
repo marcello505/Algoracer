@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3081744799862203620}
   - component: {fileID: 3264608268038300586}
   - component: {fileID: 3264608268038300585}
+  - component: {fileID: 5542212520858282059}
   m_Layer: 0
   m_Name: HintBlock
   m_TagString: Untagged
@@ -64,6 +65,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hintText: {fileID: 0}
+--- !u!114 &5542212520858282059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2418255144471887454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e881cb3a7db45df1b0b5c069e3ca9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turningSpeed: 50
 --- !u!1 &2792887491006230891
 GameObject:
   m_ObjectHideFlags: 0
