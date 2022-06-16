@@ -178,10 +178,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayableCar
       objectReference: {fileID: 0}
-    - target: {fileID: 6636646758815908102, guid: 37d8a13a18817383f9dab82ff424f8e7, type: 3}
-      propertyPath: wipeOutLength
-      value: 2.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37d8a13a18817383f9dab82ff424f8e7, type: 3}
 --- !u!1 &135902746
@@ -199,7 +195,7 @@ GameObject:
   - component: {fileID: 135902751}
   m_Layer: 0
   m_Name: Virus
-  m_TagString: Virus
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

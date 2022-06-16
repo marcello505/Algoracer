@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CarAnimator : MonoBehaviour
 {
+    [Header("Wheel Settings")]
     public GameObject wheelFrontLeft;
     public GameObject wheelFrontRight;
     public GameObject wheelBackLeft;
@@ -12,6 +13,8 @@ public class CarAnimator : MonoBehaviour
     public float maxSteeringRotation = 30f;
     public float maxWheelAcceleration = 1500f;
     public float frontWheelModifier = 0.8f;
+    [Header("Animation Objects")]
+    public Animation wipeoutAnimation;
 
 
     public void ApplySteering(float steeringValue)
@@ -40,5 +43,10 @@ public class CarAnimator : MonoBehaviour
         // frontRightRot.x += accelerationInput * maxWheelAcceleration * Time.fixedDeltaTime * frontWheelModifier;
         // wheelFrontLeft.transform.localEulerAngles = frontLeftRot;
         // wheelFrontRight.transform.localEulerAngles = frontRightRot;
+    }
+
+    public void PlayWipeoutAnimation()
+    {
+        wipeoutAnimation.Play();
     }
 }

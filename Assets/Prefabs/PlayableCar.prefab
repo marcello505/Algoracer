@@ -85,7 +85,8 @@ MonoBehaviour:
   turnFactor: 3.5
   driftFactor: 0.95
   boostSpeed: 10
-  boostLength: 0
+  wipeOutLength: 2.5
+  invulnerableLength: 5
 --- !u!114 &6287804061536900974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +106,7 @@ MonoBehaviour:
   maxSteeringRotation: 30
   maxWheelAcceleration: 1500
   frontWheelModifier: 0.8
+  wipeoutAnimation: {fileID: 5898986915814502495}
 --- !u!82 &600601580
 AudioSource:
   m_ObjectHideFlags: 0
@@ -272,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbf298c6ae9d4587f9a67b770063358e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -180
+      value: -180.14917
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbf298c6ae9d4587f9a67b770063358e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -327,6 +329,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 894303157822137741, guid: fbf298c6ae9d4587f9a67b770063358e, type: 3}
   m_PrefabInstance: {fileID: 1979372931856624254}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1709482059146942255 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fbf298c6ae9d4587f9a67b770063358e, type: 3}
+  m_PrefabInstance: {fileID: 1979372931856624254}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &5898986915814502495
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709482059146942255}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b5892abaf614ab02fa2e432c674682c8, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b5892abaf614ab02fa2e432c674682c8, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!4 &2085901430877261205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fbf298c6ae9d4587f9a67b770063358e, type: 3}

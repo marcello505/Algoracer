@@ -133,6 +133,7 @@ public class CarBehaviourV2 : MonoBehaviour
         {
             _currentInvulnerableLength = invulnerableLength;
             _currentWipeoutLength = wipeOutLength;
+            _carAnimator.PlayWipeoutAnimation();
         }
     }
 }
