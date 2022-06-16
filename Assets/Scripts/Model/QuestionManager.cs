@@ -108,6 +108,43 @@ public class QuestionManager
         questions.Add(question5);
 
 
+        Answer q6AnswerA = new Answer("Biede stellingen zijn juist", AnswerEnum.A);
+        Answer q6AnswerB = new Answer("Beide stellingen zijn onjuist", AnswerEnum.B);
+        Answer q6AnswerC = new Answer("Alleen stelling A is juist", AnswerEnum.C);
+        Answer q6AnswerD = new Answer("Alleen stelling B is juist", AnswerEnum.D);
+
+
+        List<Answer> answersQuestion6 = new List<Answer>();
+        answersQuestion6.Add(q6AnswerA);
+        answersQuestion6.Add(q6AnswerB);
+        answersQuestion6.Add(q6AnswerC);
+        answersQuestion6.Add(q6AnswerD);
+
+
+        Question question6 = new Question("Stelling A: Een algoritme is altijd zelflerend\nStelling B: Algoritmes bestaan al meer dan 100 jaar", answersQuestion6, AnswerEnum.D, "Alles is vaak oud...");
+
+        questions.Add(question6);
+
+
+
+        Answer q7AnswerA = new Answer("Biede stellingen zijn juist", AnswerEnum.A);
+        Answer q7AnswerB = new Answer("Beide stellingen zijn onjuist", AnswerEnum.B);
+        Answer q7AnswerC = new Answer("Alleen stelling A is juist", AnswerEnum.C);
+        Answer q7AnswerD = new Answer("Alleen stelling B is juist", AnswerEnum.D);
+
+
+        List<Answer> answersQuestion7 = new List<Answer>();
+        answersQuestion7.Add(q7AnswerA);
+        answersQuestion7.Add(q7AnswerB);
+        answersQuestion7.Add(q7AnswerC);
+        answersQuestion7.Add(q7AnswerD);
+
+
+        Question question7 = new Question("Stelling A: Een algoritme is altijd zelflerend\nStelling B: Algoritmes bestaan al meer dan 100 jaar", answersQuestion7, AnswerEnum.D, "Alles is vaak oud...");
+
+        questions.Add(question7);
+
+
 
         questionsLeft = new List<Question>();
 
