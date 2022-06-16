@@ -109,6 +109,9 @@ public class QuestionManager
 
 
 
+        questionsLeft = new List<Question>();
+
+
         questions.ForEach(questionsLeft.Add);
 
 
@@ -130,7 +133,7 @@ public class QuestionManager
         //MessageBox.Show(Convert.ToString(randomNumber));
         currentQuestion = questionsLeft[randomNumber];
 
-        questionsLeft.Remove(currentQuestion); 
+        questionsLeft.Remove(currentQuestion);
     }
 
 
@@ -149,7 +152,7 @@ public class QuestionManager
 
     public static QuestionManager getInstance()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = new QuestionManager();
         }
