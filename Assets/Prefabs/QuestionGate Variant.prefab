@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3dbecbbbb160d0e68e6c57aaac00755, type: 3}
       propertyPath: m_Name
-      value: QuestionGate
+      value: QuestionGate Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3dbecbbbb160d0e68e6c57aaac00755, type: 3}
       propertyPath: m_TagString

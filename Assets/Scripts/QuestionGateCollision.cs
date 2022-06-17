@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,6 @@ public class QuestionGateCollision : MonoBehaviour
     public GameObject questionMenu;
     [SerializeField] private UnityEvent questionGateTriggerEvent;
     private bool _questionIsActive = true;
-
 
     public bool IsQuestionActive() { return _questionIsActive; }
 

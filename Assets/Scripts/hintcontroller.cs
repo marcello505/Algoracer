@@ -8,16 +8,12 @@ public class hintcontroller : MonoBehaviour
 {
 
     public TextMeshProUGUI hintText;
+
+    private AudioSource _hintSfx;
     // Start is called before the first frame update
     void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        _hintSfx = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -25,6 +21,7 @@ public class hintcontroller : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             StartCoroutine(showHint());
+            _hintSfx.Play();
         }
     }
     IEnumerator showHint()

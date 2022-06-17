@@ -13,6 +13,7 @@ public class CarBehaviourV2 : MonoBehaviour
     public float boostSpeed = 10;
     public float wipeOutLength = 5f;
     public float invulnerableLength = 5f;
+    public AudioSource wipeoutAudioSource;
     
     //Local variables
     private float _rotationAngle = 0;
@@ -134,6 +135,7 @@ public class CarBehaviourV2 : MonoBehaviour
             _currentInvulnerableLength = invulnerableLength;
             _currentWipeoutLength = wipeOutLength;
             _carAnimator.PlayWipeoutAnimation();
+            wipeoutAudioSource.Play();
         }
     }
 }
