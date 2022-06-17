@@ -44,6 +44,7 @@ public class LapManager : MonoBehaviour
             if (currentLap >= totalLaps)
             {
                 //Place finish logic here
+                QuestionManager.getInstance().resetQuestionsList();
                 if(lapUIObject != null) lapUIObject.ShowFinishText();
             }
             else

@@ -163,6 +163,18 @@ public class QuestionManager
 
     }
 
+    public void resetQuestionsList()
+    {
+        questionsLeft = new List<Question>();
+        
+        questions.ForEach(questionsLeft.Add);
+
+        int randomNumber = random.Next(0, questions.Count);
+        //MessageBox.Show(Convert.ToString(randomNumber));
+        currentQuestion = questionsLeft[randomNumber];
+
+        questionsLeft.Remove(currentQuestion);
+    }
 
     public void generateNewQuestion()
     {
