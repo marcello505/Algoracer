@@ -11,11 +11,13 @@ public class StopwatchPickup : MonoBehaviour
     private Timer _timer;
     private MeshRenderer _meshRenderer;
     public MeshRenderer _childMeshRenderer;
+    private AudioSource _pickupSfx;
 
     void Start()
     {
         _timer = GameObject.FindObjectOfType<Timer>();
         _meshRenderer = GetComponent<MeshRenderer>();
+        _pickupSfx = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -56,6 +58,7 @@ public class StopwatchPickup : MonoBehaviour
             _currentCooldown = cooldownTime;
             HideModel();
             _timer.AddTime(-timeBonus);
+            _pickupSfx.Play();
         }
     }
 }
