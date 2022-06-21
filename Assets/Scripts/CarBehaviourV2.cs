@@ -11,11 +11,16 @@ public class CarBehaviourV2 : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float driftFactor = 0.95f;
     public float boostSpeed = 10;
+    public float wipeOutLength = 5f;
+    public float invulnerableLength = 5f;
+    public AudioSource wipeoutAudioSource;
     
     //Local variables
     private float _rotationAngle = 0;
     private float _velocityVsForward = 0;
     private float _boostLength = 0f;
+    private float _currentWipeoutLength = 0f;
+    private float _currentInvulnerableLength = 0f;
     
     //Components
     private Rigidbody _rigidbody;
@@ -34,13 +39,13 @@ public class CarBehaviourV2 : MonoBehaviour
     {
         var steeringInput = Input.GetAxis("Horizontal");
         var accelerationInput = Input.GetAxis("Vertical");
-        if (QuestionMenu.isAnsweringQuestion == true)
+        if (QuestionMenu.isAnsweringQuestion || _currentWipeoutLength > 0)
         {
             steeringInput = 0f;
             accelerationInput = 0f;
         }
         ApplyEngineForce(accelerationInput);
-        DecayBoosting();
+        DecayTimers();
         KillOrthogonalVelocity();
         ApplySteering(steeringInput);
         ApplyAnimations(steeringInput, accelerationInput);
@@ -106,12 +111,11 @@ public class CarBehaviourV2 : MonoBehaviour
         _carAnimator.ApplyAcceleration(accelerationInput);
     }
 
-    void DecayBoosting()
+    void DecayTimers()
     {
-        if (_boostLength > 0)
-        {
-            _boostLength = Mathf.Max(0, _boostLength - Time.fixedDeltaTime);
-        }
+        if (_boostLength > 0) _boostLength = Mathf.Max(0, _boostLength - Time.fixedDeltaTime);
+        if (_currentInvulnerableLength > 0) _currentInvulnerableLength -= Time.fixedDeltaTime;
+        if (_currentWipeoutLength > 0) _currentWipeoutLength -= Time.fixedDeltaTime;
     }
 
     void ApplyAudio(float accelerationInput)
@@ -122,5 +126,16 @@ public class CarBehaviourV2 : MonoBehaviour
     public void SetBoostingLength(float sec)
     {
         _boostLength = sec;
+    }
+
+    public void Wipeout()
+    {
+        if (_currentInvulnerableLength <= 0)
+        {
+            _currentInvulnerableLength = invulnerableLength;
+            _currentWipeoutLength = wipeOutLength;
+            _carAnimator.PlayWipeoutAnimation();
+            wipeoutAudioSource.Play();
+        }
     }
 }

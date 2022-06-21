@@ -13,11 +13,23 @@ public class Mainmenu : MonoBehaviour
     public GameObject nameObject;
     public GameObject goObject;
 
+    public GameObject storyObject;
+
     public TMP_InputField inputField;
+
+
+    public void startStory()
+    {
+        startObject.SetActive(false);
+        quitObject.SetActive(false);
+        storyObject.SetActive(true);
+    }
+
     public void PlayGame()
     {
         startObject.SetActive(false);
         quitObject.SetActive(false);
+        storyObject.SetActive(false);
         nameObject.SetActive(true);
         goObject.SetActive(true);
     }

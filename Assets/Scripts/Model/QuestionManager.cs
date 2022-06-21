@@ -8,6 +8,8 @@ public class QuestionManager
     private static QuestionManager instance = null;
     private Random random = new Random();
     private List<Question> questions;
+    private List<Question> questionsLeft;
+    private Question currentQuestion;
 
     private QuestionManager()
     {
@@ -27,13 +29,13 @@ public class QuestionManager
         answersQuestion1.Add(q1AnswerD);
 
 
-        Question question1 = new Question("Waar worden algoritmes NIET gebruikt?", answersQuestion1, AnswerEnum.D);
+        Question question1 = new Question("Waar worden algoritmes NIET gebruikt?", answersQuestion1, AnswerEnum.D, "Politieke doeleinden");
 
 
         questions.Add(question1);
 
         Answer q2AnswerA = new Answer("Een set met instructies voor het bereiken van een doel", AnswerEnum.A);
-        Answer q2AnswerB = new Answer("een digitale munteenheid", AnswerEnum.B);
+        Answer q2AnswerB = new Answer("Een digitale munteenheid", AnswerEnum.B);
         Answer q2AnswerC = new Answer("Het manier van online data verzamelen", AnswerEnum.C);
         Answer q2AnswerD = new Answer("De taal waarmee een computer iets doet", AnswerEnum.D);
 
@@ -45,7 +47,7 @@ public class QuestionManager
         answersQuestion2.Add(q2AnswerD);
 
 
-        Question question2 = new Question("Wat is een algoritme?", answersQuestion2, AnswerEnum.A);
+        Question question2 = new Question("Wat is een algoritme?", answersQuestion2, AnswerEnum.A, "Stapsgewijs iets uitvoeren");
 
         questions.Add(question2);
 
@@ -62,7 +64,7 @@ public class QuestionManager
         answersQuestion3.Add(q3AnswerD);
 
 
-        Question question3 = new Question("Waar is een algoritme NIET goed in?", answersQuestion3, AnswerEnum.A);
+        Question question3 = new Question("Waar is een algoritme NIET goed in?", answersQuestion3, AnswerEnum.A, "Hoeveel truien passen er in je koffer?");
 
         questions.Add(question3);
 
@@ -82,7 +84,7 @@ public class QuestionManager
         answersQuestion4.Add(q4AnswerD);
 
 
-        Question question4 = new Question("Stelling A: Een algoritme kan voorspellen dat je zwanger bent op basis van je zoekhistory\nStelling B: Een ander woordt voor algoritme is recept", answersQuestion4, AnswerEnum.A);
+        Question question4 = new Question("Stelling A: Een algoritme kan voorspellen dat je zwanger bent op basis van je zoekhistory\nStelling B: Een ander woordt voor algoritme is recept", answersQuestion4, AnswerEnum.A, "De volgende stap is....");
 
         questions.Add(question4);
 
@@ -101,29 +103,105 @@ public class QuestionManager
         answersQuestion5.Add(q5AnswerD);
 
 
-        Question question5 = new Question("Stelling A: Een algoritme is altijd zelflerend\nStelling B: Algoritmes bestaan al meer dan 100 jaar", answersQuestion4, AnswerEnum.D);
+        Question question5 = new Question("Stelling A: Een algoritme is altijd zelflerend\nStelling B: Algoritmes bestaan al meer dan 100 jaar", answersQuestion4, AnswerEnum.D, "Alles is vaak oud...");
 
         questions.Add(question5);
 
 
-    }
+        Answer q6AnswerA = new Answer("Biede stellingen zijn juist", AnswerEnum.A);
+        Answer q6AnswerB = new Answer("Beide stellingen zijn onjuist", AnswerEnum.B);
+        Answer q6AnswerC = new Answer("Alleen stelling A is juist", AnswerEnum.C);
+        Answer q6AnswerD = new Answer("Alleen stelling B is juist", AnswerEnum.D);
+
+
+        List<Answer> answersQuestion6 = new List<Answer>();
+        answersQuestion6.Add(q6AnswerA);
+        answersQuestion6.Add(q6AnswerB);
+        answersQuestion6.Add(q6AnswerC);
+        answersQuestion6.Add(q6AnswerD);
+
+
+        Question question6 = new Question("Stelling A: Een algoritme is altijd zelflerend\nStelling B: Algoritmes bestaan al meer dan 100 jaar", answersQuestion6, AnswerEnum.D, "Alles is vaak oud...");
+
+        questions.Add(question6);
 
 
 
-    public Question getRandomQuestion()
-    {
+        Answer q7AnswerA = new Answer("Biede stellingen zijn juist", AnswerEnum.A);
+        Answer q7AnswerB = new Answer("Beide stellingen zijn onjuist", AnswerEnum.B);
+        Answer q7AnswerC = new Answer("Alleen stelling A is juist", AnswerEnum.C);
+        Answer q7AnswerD = new Answer("Alleen stelling B is juist", AnswerEnum.D);
+
+
+        List<Answer> answersQuestion7 = new List<Answer>();
+        answersQuestion7.Add(q7AnswerA);
+        answersQuestion7.Add(q7AnswerB);
+        answersQuestion7.Add(q7AnswerC);
+        answersQuestion7.Add(q7AnswerD);
+
+
+        Question question7 = new Question("Stelling A: Een algoritme is altijd zelflerend\nStelling B: Algoritmes bestaan al meer dan 100 jaar", answersQuestion7, AnswerEnum.D, "Alles is vaak oud...");
+
+        questions.Add(question7);
+
+
+
+        questionsLeft = new List<Question>();
+
+
+        questions.ForEach(questionsLeft.Add);
+
+
+
         int randomNumber = random.Next(0, questions.Count);
         //MessageBox.Show(Convert.ToString(randomNumber));
-        return questions[randomNumber];
-        //iconButton.ForeColor = iconButton.BackColor;
-        //icons.RemoveAt(randomNumber)
+        currentQuestion = questionsLeft[randomNumber];
+
+        questionsLeft.Remove(currentQuestion);
+
+
+
     }
 
+    public void resetQuestionsList()
+    {
+        questionsLeft = new List<Question>();
+        
+        questions.ForEach(questionsLeft.Add);
+
+        int randomNumber = random.Next(0, questions.Count);
+        //MessageBox.Show(Convert.ToString(randomNumber));
+        currentQuestion = questionsLeft[randomNumber];
+
+        questionsLeft.Remove(currentQuestion);
+    }
+
+    public void generateNewQuestion()
+    {
+        int randomNumber = random.Next(0, questionsLeft.Count);
+        //MessageBox.Show(Convert.ToString(randomNumber));
+        currentQuestion = questionsLeft[randomNumber];
+
+        questionsLeft.Remove(currentQuestion);
+    }
+
+
+    public Question getCurrentQuestion()
+    {
+        return currentQuestion;
+    }
+
+
+
+    public string getHintFromCurrentQuestion()
+    {
+        return currentQuestion.hint;
+    }
 
 
     public static QuestionManager getInstance()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = new QuestionManager();
         }
